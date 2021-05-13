@@ -1,11 +1,11 @@
 from django.contrib import admin
-from .models import Author
+from .models import Author,User
 # Register your models here.
 
 @admin.register(Author)
 class PostAdmin(admin.ModelAdmin):
     list_display = ('first_name', 'last_name', 'brithday_year')
 
-# @admin.register(User)
-# class PostAdmin(admin.ModelAdmin):
-#     list_display = ('username','first_name', 'last_name', 'email')
+@admin.register(User)
+class PostAdmin(admin.ModelAdmin):
+    list_display = ('username','first_name', 'last_name', 'email')

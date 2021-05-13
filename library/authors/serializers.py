@@ -1,7 +1,7 @@
 from rest_framework.serializers import HyperlinkedModelSerializer,ModelSerializer,ReadOnlyField
 
-from .models import Author
-from django.contrib.auth.models import User
+from .models import Author,User
+
 
 
 

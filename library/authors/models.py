@@ -1,11 +1,9 @@
 from django.db import models
-from django.contrib.auth.models import User
-# from django.contrib.auth.models import AbstractUser
+
+from django.contrib.auth.models import AbstractUser
 
 
-# Create your models here.
 
-User._meta.get_field('email')._unique = True
 class Author(models.Model):
     first_name = models.CharField(max_length=64)
     last_name = models.CharField(max_length=64)
@@ -15,7 +13,7 @@ class Author(models.Model):
         return f'{self.first_name} {self.last_name}'
 
 
-# class User(AbstractUser):
-#     activation_key = models.CharField(max_length=128, blank=True)
+class User(AbstractUser):
+     email = models.CharField(max_length=64,verbose_name='email',unique=True)
 
 

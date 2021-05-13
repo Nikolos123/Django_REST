@@ -121,4 +121,4 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'
-# AUTH_USER_MODEL = 'authors.User'
+AUTH_USER_MODEL = 'authors.User'
