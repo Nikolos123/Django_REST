@@ -1,14 +1,14 @@
-from rest_framework.serializers import HyperlinkedModelSerializer,ModelSerializer,ReadOnlyField
+from rest_framework.serializers import HyperlinkedModelSerializer
 
-from .models import Author,User
-
-
+from .models import User
 
 
-class AuthorModelSerializer(HyperlinkedModelSerializer):
-    class Meta:
-        model = Author
-        fields = '__all__'
+
+
+# class AuthorModelSerializer(HyperlinkedModelSerializer):
+#     class Meta:
+#         model = Author
+#         fields = '__all__'
 
 
 class UserMainModelSerializer(HyperlinkedModelSerializer):
