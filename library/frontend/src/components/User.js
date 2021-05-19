@@ -23,7 +23,11 @@ const UserItem = ({user}) => {
 
 const UserList = ({users}) => {
     return (
-        <div class="outer">
+
+        <body class="outer">
+        <header>
+            <h1>Шапка</h1>
+        </header>
             <div class="header">
                 <ul>
                     <li><a href="#">Главная</a></li>
@@ -50,12 +54,10 @@ const UserList = ({users}) => {
 
                 </table>
             </div>
-            <div class="footer">
-
-                <p>this footer</p>
-            </div>
-
-        </div>
+        <footer>
+            Подвал
+        </footer>
+        </body>
     )
 }
 
