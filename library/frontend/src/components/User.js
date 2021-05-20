@@ -24,19 +24,13 @@ const UserItem = ({user}) => {
 const UserList = ({users}) => {
     return (
 
-        <body class="outer">
+        <body>
         <header class="header">
-            <h1>Шапка</h1>
-        </header>
-            <div class="header">
-                <ul>
-                    <li><a href="#">Главная</a></li>
-                    <li><a href="#">О нас</a></li>
-                    <li><a href="#">Галерея</a></li>
-                    <li><a href="#">Контакты</a></li>
+            <ul>
+                    <li><a href="#">Пользователи</a></li>
                 </ul>
-            </div>
-            <div class="inner">
+        </header>
+            <div>
                 <table class="Table">
                     <th>
                         User name
@@ -51,11 +45,10 @@ const UserList = ({users}) => {
                         Email
                     </th>
                     {users.map((user) => <UserItem user={user}/>)}
-
                 </table>
             </div>
-        <footer class="header">
-            Подвал
+        <footer class="footer">
+            2021 CopyRight
         </footer>
         </body>
     )
