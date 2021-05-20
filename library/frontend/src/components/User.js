@@ -27,6 +27,7 @@ const UserList = ({users}) => {
         <body>
         <header class="header">
             <ul>
+                    <li><a href="#">Главная</a></li>
                     <li><a href="#">Пользователи</a></li>
                 </ul>
         </header>
@@ -48,7 +49,7 @@ const UserList = ({users}) => {
                 </table>
             </div>
         <footer class="footer">
-            2021 CopyRight
+            2021 CopyRight &copy;
         </footer>
         </body>
     )
