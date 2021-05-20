@@ -25,7 +25,7 @@ const UserList = ({users}) => {
     return (
 
         <body class="outer">
-        <header>
+        <header class="header">
             <h1>Шапка</h1>
         </header>
             <div class="header">
@@ -54,7 +54,7 @@ const UserList = ({users}) => {
 
                 </table>
             </div>
-        <footer>
+        <footer class="header">
             Подвал
         </footer>
         </body>
