@@ -21,18 +21,18 @@ const UserItem = ({user}) => {
     )
 }
 
-const UserList = ({users}) => {
+const TodoList = ({users}) => {
     return (
-        <div class="outer">
-            <div class="header">
-                <ul>
-                    <li><a href="#">Главная</a></li>
-                    <li><a href="#">О нас</a></li>
-                    <li><a href="#">Галерея</a></li>
-                    <li><a href="#">Контакты</a></li>
+
+        <body>
+        <header class="header">
+            <ul>
+                    <li><a href="#">Пользователи</a></li>
+                    <li><a href="#">Проекты</a></li>
+                    <li><a href="#">ToDo list</a></li>
                 </ul>
-            </div>
-            <div class="inner">
+        </header>
+            <div>
                 <table class="Table">
                     <th>
                         User name
@@ -47,15 +47,82 @@ const UserList = ({users}) => {
                         Email
                     </th>
                     {users.map((user) => <UserItem user={user}/>)}
-
                 </table>
             </div>
-            <div class="footer">
+        <footer class="footer">
+            2021 CopyRight &copy;
+        </footer>
+        </body>
+    )
+}
 
-                <p>this footer</p>
+const ProjectList = ({users}) => {
+    return (
+
+        <body>
+        <header class="header">
+            <ul>
+                    <li><a href="#">Пользователи</a></li>
+                    <li><a href="#">Проекты</a></li>
+                    <li><a href="#">ToDo list</a></li>
+                </ul>
+        </header>
+            <div>
+                <table class="Table">
+                    <th>
+                        User name
+                    </th>
+                    <th>
+                        First name
+                    </th>
+                    <th>
+                        Last Name
+                    </th>
+                    <th>
+                        Email
+                    </th>
+                    {users.map((user) => <UserItem user={user}/>)}
+                </table>
             </div>
+        <footer class="footer">
+            2021 CopyRight &copy;
+        </footer>
+        </body>
+    )
+}
 
-        </div>
+const UserList = ({users}) => {
+    return (
+
+        <body>
+        <header class="header">
+            <ul>
+                    <li><a href="#">Пользователи</a></li>
+                    <li><a href="#">Проекты</a></li>
+                    <li><a href="#">ToDo list</a></li>
+                </ul>
+        </header>
+            <div>
+                <table class="Table">
+                    <th>
+                        User name
+                    </th>
+                    <th>
+                        First name
+                    </th>
+                    <th>
+                        Last Name
+                    </th>
+                    <th>
+                        Email
+                    </th>
+                    {users.map((user) => <UserItem user={user}/>)}
+                </table>
+            </div>
+        <footer class="footer">
+            2021 CopyRight &copy;
+        </footer>
+        </body>
     )
 }
 
