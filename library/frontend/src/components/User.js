@@ -20,87 +20,16 @@ const UserItem = ({user}) => {
         </tr>
     )
 }
-
-const TodoList = ({users}) => {
-    return (
-
-        <body>
-        <header class="header">
-            <ul>
-                    <li><a href="#">Пользователи</a></li>
-                    <li><a href="#">Проекты</a></li>
-                    <li><a href="#">ToDo list</a></li>
-                </ul>
-        </header>
-            <div>
-                <table class="Table">
-                    <th>
-                        User name
-                    </th>
-                    <th>
-                        First name
-                    </th>
-                    <th>
-                        Last Name
-                    </th>
-                    <th>
-                        Email
-                    </th>
-                    {users.map((user) => <UserItem user={user}/>)}
-                </table>
-            </div>
-        <footer class="footer">
-            2021 CopyRight &copy;
-        </footer>
-        </body>
-    )
-}
-
-const ProjectList = ({users}) => {
-    return (
-
-        <body>
-        <header class="header">
-            <ul>
-                    <li><a href="#">Пользователи</a></li>
-                    <li><a href="#">Проекты</a></li>
-                    <li><a href="#">ToDo list</a></li>
-                </ul>
-        </header>
-            <div>
-                <table class="Table">
-                    <th>
-                        User name
-                    </th>
-                    <th>
-                        First name
-                    </th>
-                    <th>
-                        Last Name
-                    </th>
-                    <th>
-                        Email
-                    </th>
-                    {users.map((user) => <UserItem user={user}/>)}
-                </table>
-            </div>
-        <footer class="footer">
-            2021 CopyRight &copy;
-        </footer>
-        </body>
-    )
-}
-
 const UserList = ({users}) => {
     return (
 
         <body>
         <header class="header">
-            <ul>
-                    <li><a href="#">Пользователи</a></li>
-                    <li><a href="#">Проекты</a></li>
-                    <li><a href="#">ToDo list</a></li>
-                </ul>
+            {/*<ul>*/}
+            {/*        <li><a href="#">Пользователи</a></li>*/}
+            {/*        <li><a href="#">Проекты</a></li>*/}
+            {/*        <li><a href="#">ToDo list</a></li>*/}
+            {/*    </ul>*/}
         </header>
             <div>
                 <table class="Table">
