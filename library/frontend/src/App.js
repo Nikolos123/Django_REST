@@ -6,8 +6,10 @@ import axios from 'axios'
 import UserList from "./components/User";
 import ProjectList from "./components/Project.js";
 import TodoList from "./components/Todo.js";
+import ProjectPage from "./components/PagesProject.js";
 
 import {HashRouter, BrowserRouter, Route, Redirect, Switch, Link} from 'react-router-dom';
+import Project from "./components/Project.js";
 
 const NotFound404 = ({location}) => {
     return (
@@ -85,9 +87,11 @@ class App extends React.Component {
 
 
                         <Route exact path='/projects' component={() => <ProjectList projects={this.state.projects}/>}/>
+                        <Route exact path='/project/:id' component = {() => <ProjectPage projects={this.state.projects} />} />
+
                         <Route exact path='/todos' component={() => <TodoList todos={this.state.todos}/>}/>
                         {/*<Route exact path='/books' component = {() => <BookList books={this.state.books} />} />*/}
-                        {/*<Route exact path='/author/:id' component = {() => <AuthorPage authors={this.state.authors} />} />*/}
+
                         {/*<Redirect from='/authors' to='/' />*/}
                         <Redirect from='/users' to='/'/>
                         <Route component={NotFound404}/>
