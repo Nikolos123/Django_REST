@@ -65,7 +65,7 @@ class App extends React.Component {
     render() {
         return (
             <div>
-                <HashRouter>
+                <BrowserRouter>
                     <nav class="header">
                         <ul>
                             <li>
@@ -80,26 +80,15 @@ class App extends React.Component {
                         </ul>
                     </nav>
 
-
                     <Switch>
                         <Route exact path='/' component={() => <UserList users={this.state.users}/>}/>
-                        {/*<Route exact path='/' component = {() => <UserList users={this.state.users} />} />*/}
-
-
                         <Route exact path='/projects' component={() => <ProjectList projects={this.state.projects}/>}/>
                         <Route exact path='/project/:id' component = {() => <ProjectPage projects={this.state.projects} />} />
-
                         <Route exact path='/todos' component={() => <TodoList todos={this.state.todos}/>}/>
-                        {/*<Route exact path='/books' component = {() => <BookList books={this.state.books} />} />*/}
-
-                        {/*<Redirect from='/authors' to='/' />*/}
                         <Redirect from='/users' to='/'/>
                         <Route component={NotFound404}/>
                     </Switch>
-                </HashRouter>
-
-                {/*<UserList users={this.state.users}/>*/}
-                {/*<TodoList todos={this.state.todos}/>*/}
+                </BrowserRouter>
             </div>
         )
     }
