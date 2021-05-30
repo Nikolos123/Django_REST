@@ -56,38 +56,3 @@ const ProjectPage = ({projects}) => {
 }
 
 export default ProjectPage;
-
-
-// const ProjectList = ({projects}) => {
-//     return (
-//
-//         <body>
-//         <header class="header">
-//
-//         </header>
-//         <div>
-//             <table class="Table">
-//                 <th>
-//                     Имя
-//                 </th>
-//                 <th>
-//                     ID_Проекта
-//                 </th>
-//                 <th>
-//                     ID_Пользователя
-//                 </th>
-//                 <th>
-//                     Ссылка
-//                 </th>
-//                 {projects.map((project) => <ProjectItem project={project}/>)}
-//             </table>
-//         </div>
-//         <footer class="footer">
-//             2021 CopyRight &copy;
-//         </footer>
-//         </body>
-//     )
-// }
-//
-//
-// export default ProjectList
