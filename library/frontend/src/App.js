@@ -7,6 +7,9 @@ import UserList from "./components/User";
 import ProjectList from "./components/Project.js";
 import TodoList from "./components/Todo.js";
 import ProjectPage from "./components/PagesProject.js";
+import LoginForm from "./components/Auth.js";
+
+import Footer from "./components/Footer.js";
 
 import {HashRouter, BrowserRouter, Route, Redirect, Switch, Link} from 'react-router-dom';
 import Project from "./components/Project.js";
@@ -77,6 +80,9 @@ class App extends React.Component {
                             <li>
                                 <Link to='/todos'>TodoList</Link>
                             </li>
+                            <li>
+                                <Link to='/login'>Login</Link>
+                            </li>
                         </ul>
                     </nav>
 
@@ -84,7 +90,8 @@ class App extends React.Component {
                         <Route exact path='/' component={() => <UserList users={this.state.users}/>}/>
                         <Route exact path='/projects' component={() => <ProjectList projects={this.state.projects}/>}/>
                         <Route exact path='/project/:id' component = {() => <ProjectPage projects={this.state.projects} />} />
-                        <Route exact path='/todos' component={() => <TodoList todos={this.state.todos}/>}/>
+                        <Route exact path='/todos' component={() => <TodoList />}/>
+                        <Route exact path='/login' component={() => <LoginForm login={this.state.todos}/>}/>
                         <Redirect from='/users' to='/'/>
                         <Route component={NotFound404}/>
                     </Switch>
