@@ -9,7 +9,7 @@ import TodoList from "./components/Todo.js";
 import ProjectPage from "./components/PagesProject.js";
 import LoginForm from "./components/Auth.js";
 
-import Footer from "./components/Footer.js";
+
 
 import {HashRouter, BrowserRouter, Route, Redirect, Switch, Link} from 'react-router-dom';
 import Project from "./components/Project.js";
@@ -26,16 +26,40 @@ const NotFound404 = ({location}) => {
 class App extends React.Component {
     constructor(props) {
         super(props)
+         let token = localStorage.getItem('token');
         this.state = {
             'users': [],
             'todos': [],
-            'projects': []
+            'projects': [],
+            'token': token,
         }
     }
 
-    componentDidMount() {
 
-        axios.get('http://127.0.0.1:8000/api/user').then(response => {
+    restore_token() {
+       let token = localStorage.getItem('token');
+
+       this.setState(
+           {
+               'token': token
+           }
+       );
+    }
+
+    create_header() {
+       if (!this.is_auth())
+           return {};
+
+       return {
+            'Authorization': 'Token ' + this.state.token
+       }
+    }
+
+     load_data() {
+        let headers = this.create_header();
+
+    // componentDidMount() {
+        axios.get('http://127.0.0.1:8000/api/user/',{headers}).then(response => {
             const users = response.data
             this.setState(
                 {
@@ -44,7 +68,7 @@ class App extends React.Component {
             )
         }).catch(error => console.log(error))
 
-        axios.get('http://127.0.0.1:8000/api/todo').then(response => {
+        axios.get('http://127.0.0.1:8000/api/todo/',{headers}).then(response => {
             const todos = response.data
             this.setState(
                 {
@@ -52,7 +76,7 @@ class App extends React.Component {
                 })
         }).catch(error => console.log(error))
 
-        axios.get('http://127.0.0.1:8000/api/project').then(response => {
+        axios.get('http://127.0.0.1:8000/api/project/',{headers}).then(response => {
             const projects = response.data
             this.setState(
                 {
@@ -61,14 +85,51 @@ class App extends React.Component {
                 }
             )
         }).catch(error => console.log(error))
+ }
 
 
+
+    componentDidMount() {
+        this.restore_token();
+        this.load_data();
     }
+
+    is_auth() {
+
+        return this.state.token != '';
+    }
+
+    logout() {
+           this.setState(
+               {
+                   'token': ''
+               }
+           );
+    }
+
+    get_token(login, password) {
+       axios.post(
+            'http://127.0.0.1:8000/api-token-auth/',
+            {"username": login, "password": password}
+       )
+       .then(response => {
+           this.setState(
+               {
+                   'token': response.data.token
+               }
+           );
+           localStorage.setItem('token', response.data.token)
+
+           console.log(this.state.token);
+       })
+       .catch(error => alert('Wrong password'))
+    }
+
 
     render() {
         return (
             <div>
-                <BrowserRouter>
+                <HashRouter>
                     <nav class="header">
                         <ul>
                             <li>
@@ -90,12 +151,12 @@ class App extends React.Component {
                         <Route exact path='/' component={() => <UserList users={this.state.users}/>}/>
                         <Route exact path='/projects' component={() => <ProjectList projects={this.state.projects}/>}/>
                         <Route exact path='/project/:id' component = {() => <ProjectPage projects={this.state.projects} />} />
-                        <Route exact path='/todos' component={() => <TodoList />}/>
-                        <Route exact path='/login' component={() => <LoginForm login={this.state.todos}/>}/>
+                        <Route exact path='/todos' component={() => <TodoList todos={this.state.todos} />}/>
+                        <Route exact path='/login' component={() => <LoginForm get_token={(username, password) => this.get_token(username, password)}/>}/>
                         <Redirect from='/users' to='/'/>
                         <Route component={NotFound404}/>
                     </Switch>
-                </BrowserRouter>
+                </HashRouter>
             </div>
         )
     }
