@@ -1,3 +1,41 @@
+import random
+
 from django.test import TestCase
 
-# Create your tests here.
+
+from rest_framework import status
+from rest_framework.test import APITestCase, APIClient, APIRequestFactory, force_authenticate
+
+from authors.models import User
+from .views import TodoMainModelViewSet,ProjectMainModelViewSet
+
+
+class TestTodoViewSet(TestCase):
+
+    def email_test(self):
+        chache = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0] * 100
+        random.shuffle(chache)
+        buf = ""
+        for i in range(0, 10):
+            buf += str(chache.pop())
+        return "Nikolay" + buf + "@mail.com"
+
+    # APIRequestFactory
+    def test_get_list(self):
+        factory = APIRequestFactory()
+        request = factory.get('/api/user/')
+        view = TodoMainModelViewSet.as_view({'get':'list'})
+        response = view(request)
+        self.assertEqual(response.status_code,status.HTTP_200_OK)
+
+
+
+
+class TestProjectViewSet(TestCase):
+    # APIRequestFactory
+    def test_get_list(self):
+        factory = APIRequestFactory()
+        request = factory.get('/api/user/')
+        view = ProjectMainModelViewSet.as_view({'get':'list'})
+        response = view(request)
+        self.assertEqual(response.status_code,status.HTTP_200_OK)
