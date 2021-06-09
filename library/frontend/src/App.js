@@ -11,8 +11,8 @@ import LoginForm from "./components/Auth.js";
 
 
 
-import {HashRouter, BrowserRouter, Route, Redirect, Switch, Link} from 'react-router-dom';
-import Project from "./components/Project.js";
+import {HashRouter, Route, Redirect, Switch, Link} from 'react-router-dom';
+
 
 const NotFound404 = ({location}) => {
     return (
@@ -31,7 +31,7 @@ class App extends React.Component {
             'users': [],
             'todos': [],
             'projects': [],
-            'token': token,
+            'token': '',
         }
     }
 
@@ -42,7 +42,7 @@ class App extends React.Component {
        this.setState(
            {
                'token': token
-           }
+           },this.load_data
        );
     }
 
@@ -96,14 +96,14 @@ class App extends React.Component {
 
     is_auth() {
 
-        return this.state.token != '';
+        return !!(this.state.token);
     }
 
     logout() {
            this.setState(
                {
                    'token': ''
-               }
+               },this.load_data
            );
     }
 
@@ -116,7 +116,7 @@ class App extends React.Component {
            this.setState(
                {
                    'token': response.data.token
-               }
+               },this.load_data
            );
            localStorage.setItem('token', response.data.token)
 
