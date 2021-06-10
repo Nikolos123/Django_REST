@@ -48,6 +48,9 @@ INSTALLED_APPS = [
     'djoser',
     # 'rest_framework_json_api',
     'rest_framework_jwt',
+
+    'drf_yasg',
+
 ]
 
 MIDDLEWARE = [
@@ -150,6 +153,7 @@ REST_FRAMEWORK = {
         'rest_framework.authentication.SessionAuthentication',
         'rest_framework.authentication.TokenAuthentication',
     ],
+    'DEFAULT_VERSIONING_CLASS': 'rest_framework.versioning.NamespaceVersioning',
     # 'DEFAULT_PERMISSION_CLASSES': [
     #     'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
     # ],
