@@ -21,15 +21,21 @@ class Todo(models.Model):
     user = models.ForeignKey(User, related_name='user', on_delete=models.CASCADE)
     active = models.BooleanField(verbose_name='активный', default=True)
 
+
 # script for homework
 # {
-#   allTodos {
-# 	project{id
-#   		name}
-# 	user {
-# 	  id
-#     email
-#     username
-# 		}
-#   }
+#     allTodos
+# {
+#     id
+#     project
+#         {id
+#          name
+#          users
+#             {
+#             id
+#             email
+#             username
+#             }}
+#
+# }
 # }
