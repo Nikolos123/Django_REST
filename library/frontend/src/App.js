@@ -91,7 +91,7 @@ class App extends React.Component {
 
     componentDidMount() {
         this.restore_token();
-        this.load_data();
+        // this.load_data();
     }
 
     is_auth() {

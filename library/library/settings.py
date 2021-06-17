@@ -51,6 +51,8 @@ INSTALLED_APPS = [
 
     'drf_yasg',
 
+    'graphene_django',
+
 ]
 
 MIDDLEWARE = [
@@ -175,4 +177,8 @@ DJOSER = {
     'PASSWORD_RESET_SHOW_EMAIL_NOT_FOUND': True,
     'PASSWORD_RESET_CONFIRM_URL': 'auth/reset/confirm/{uid}/{token}/',
     'TOKEN_MODEL': None
+}
+
+GRAPHENE = {
+    "SCHEMA": "library.schema.schema"
 }
