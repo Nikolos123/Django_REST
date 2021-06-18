@@ -20,22 +20,3 @@ class Todo(models.Model):
     update = models.DateTimeField(verbose_name='обновил', auto_now=True)
     user = models.ForeignKey(User, related_name='user', on_delete=models.CASCADE)
     active = models.BooleanField(verbose_name='активный', default=True)
-
-
-# script for homework
-# {
-#     allTodos
-# {
-#     id
-#     project
-#         {id
-#          name
-#          users
-#             {
-#             id
-#             email
-#             username
-#             }}
-#
-# }
-# }

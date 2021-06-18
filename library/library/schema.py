@@ -52,3 +52,22 @@ class Query(graphene.ObjectType):
 
 
 schema = graphene.Schema(query=Query)
+
+
+# script for homework
+# {
+#     allTodos
+# {
+#     id
+#     project
+#         {id
+#         name
+#         users
+#             {
+#             id
+#             email
+#             username
+#             }}
+#
+# }
+# }

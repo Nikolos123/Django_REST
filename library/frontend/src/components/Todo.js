@@ -1,7 +1,7 @@
 import React from 'react'
 
 
-const ToDotItem = ({todo}) => {
+const ToDotItem = ({todo,delete_todo}) => {
     return (
         <tr>
             <td class="Line">
@@ -22,11 +22,14 @@ const ToDotItem = ({todo}) => {
             <td className="Line">
                 {todo.active}
             </td>
+             <td className="Line">
+                <button onClick={()=>delete_todo(todo.id)}> Delete </button>
+            </td>
 
         </tr>
     )
 }
-const TodoList = ({todos}) => {
+const TodoList = ({todos,delete_todo}) => {
     return (
 
         <body>
@@ -57,7 +60,10 @@ const TodoList = ({todos}) => {
                 <th>
                     Статус
                 </th>
-                {todos.map((todo) => <ToDotItem todo={todo}/>)}
+                <th>
+                Команда удалить
+                </th>
+                {todos.map((todo) => <ToDotItem todo={todo} delete_todo={delete_todo}/>)}
             </table>
         </div>
         <footer class="footer">

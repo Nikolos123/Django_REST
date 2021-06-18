@@ -13,4 +13,4 @@ class ProjectMainModelSerializer(ModelSerializer):
 class TodoMainModelSerializer(ModelSerializer):
     class Meta:
         model = Todo
-        fields = ('project','comment','create','update','user','active')
+        fields = ('id','project','comment','create','update','user','active')

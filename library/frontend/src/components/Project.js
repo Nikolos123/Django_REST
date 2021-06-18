@@ -3,7 +3,7 @@ import React from 'react'
 import {Link} from 'react-router-dom';
 
 
-const ProjectItem = ({project}) => {
+const ProjectItem = ({project,delete_project}) => {
     return (
         <tr>
 
@@ -21,11 +21,14 @@ const ProjectItem = ({project}) => {
             <td class="Line">
                 {project.url}
             </td>
+            <td className="Line">
+                <button onClick={()=>delete_project(project.id)}> Delete </button>
+            </td>
 
         </tr>
     )
 }
-const ProjectList = ({projects}) => {
+const ProjectList = ({projects,delete_project}) => {
     return (
 
         <body>
@@ -46,7 +49,10 @@ const ProjectList = ({projects}) => {
                 <th>
                     Ссылка
                 </th>
-                {projects.map((project) => <ProjectItem project={project}/>)}
+                <th>
+                Команда удалить
+                </th>
+                {projects.map((project) => <ProjectItem project={project} delete_project={delete_project}/>)}
             </table>
         </div>
         <footer class="footer">
