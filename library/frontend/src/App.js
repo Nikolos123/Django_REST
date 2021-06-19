@@ -9,6 +9,7 @@ import TodoList from "./components/Todo.js";
 import ProjectPage from "./components/PagesProject.js";
 import LoginForm from "./components/Auth.js";
 import ProjectForm from './components/ProjectForm.js';
+import TodoForm from './components/TodoForm.js';
 
 
 import {HashRouter, Route, Redirect, Switch, Link} from 'react-router-dom';
@@ -141,20 +142,16 @@ class App extends React.Component {
     }
 
     create_project(name, users, link) {
-        console.log("create_project " + name + " - " + users + " - " + link);
-        console.log(users);
-
         axios
             .post(
                 'http://127.0.0.1:8000/api/project/',
-                {"name": name, "users": users, "link": link}
+                {"name": name, "users": users, "url": link}
             )
             .then(response => {
                 this.load_data();
             })
             .catch(error => console.log('Wrong password'))
     }
-
 
     delete_todo(id) {
         let headers = this.create_header();
@@ -172,14 +169,11 @@ class App extends React.Component {
             })
     }
 
-    create_todo(project, comment, user, active) {
-        console.log("create_todo " + project + " - " + comment + " - " + user + " - " + active);
-        console.log(user);
-
+    create_todo(project, comment, users, active) {
         axios
             .post(
-                'http://127.0.0.1:8000/api/project/',
-                {"project": project, "comment": comment, "user": user, 'active': active}
+                'http://127.0.0.1:8000/api/todo/',
+                {"project": project, "comment": comment, "user": users, 'active': active}
             )
             .then(response => {
                 this.load_data();
@@ -201,7 +195,13 @@ class App extends React.Component {
                                 <Link to='/projects'>Проекты</Link>
                             </li>
                             <li>
+                                <Link to='/projects/create'>Создать проект</Link>
+                            </li>
+                            <li>
                                 <Link to='/todos'>TodoList</Link>
+                            </li>
+                            <li>
+                                <Link to='/todos/create'>Создать Todo</Link>
                             </li>
                             <li>
                                 <Link to='/login'>Login</Link>
@@ -222,10 +222,10 @@ class App extends React.Component {
                                component={() => <ProjectForm
                                    create_project={(name, users, link) => this.create_project(name, users, link)}
                                    users={this.state.users}/>}/>
-                        <Route exact path='/todo/create'
+                        <Route exact path='/todos/create'
                                component={() => <TodoForm
-                                   create_project={(project, comment, user, active) => this.create_project(project, comment, user, active)}
-                                   user={this.state.users}/>}/>
+                                   create_todo={(project, comment, user, active) => this.create_todo(project, comment, user, active)}
+                                   users={this.state.users} project={this.state.project}/>}/>
 
                         <Route exact path='/login' component={() => <LoginForm
                             get_token={(username, password) => this.get_token(username, password)}/>}/>
