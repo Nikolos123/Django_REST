@@ -8,8 +8,8 @@
 
 import graphene
 from graphene_django import DjangoObjectType
-from authors.models import  User
-from Project.models import  Project,Todo
+from backend.authors import  User
+from backend.Project.models import  Project,Todo
 
 class ProjectType(DjangoObjectType):
     class Meta:

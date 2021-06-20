@@ -4,9 +4,8 @@ from django.test import TestCase
 
 
 from rest_framework import status
-from rest_framework.test import APITestCase, APIClient, APIRequestFactory, force_authenticate
+from rest_framework.test import APIRequestFactory
 
-from authors.models import User
 from .views import TodoMainModelViewSet,ProjectMainModelViewSet
 
 
